@@ -1,0 +1,20 @@
+{
+  "name": "mongoScrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crayz7/mongoScrape.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crayz7/mongoScrape/issues"
+  },
+  "homepage": "https://github.com/crayz7/mongoScrape#readme"
+}
