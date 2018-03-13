@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1 class="jumboheader">Reddit News Scraper</h1>
+  <p class="lead">Scrape the latest News Subreddit</p>
+  <p>
+    <a class="btn btn-lg btn-success" href="/scrape" role="button">Get the latest news!</a>
+  </p>
+</div>
+
+<h1>Scraper App</h1>
+
+<p>Scrape the News subreddit!</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+  {{#each headlines}}
+  	<li>
+  		<p><span class="label">Headline:</span> {{this.headline}}</p>
+
+      <a href="/{{this.link}}">Link goes here</a>
+  	</li>
+  {{/each}}
+</ul>

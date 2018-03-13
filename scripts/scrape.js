@@ -1,3 +1,6 @@
+var cheerio = require("cheerio");
+var mongoose = require("mongoose");
+
 // A GET route for scraping the reddit news website
 app.get("/scrape", function (req, res) {
     // First, we grab the body of the html with request

@@ -20,14 +20,4 @@ router.get("/", function(req, res) {
     res.render("index");
   });
 
-router.get("/savedheadlines"), function(req, res) {
-    Headline.find({}, function(error, doc) {
-        if (err) return res.status(500).send('Something broke!');
-        var hbsHeadlineObject = {
-            headlines: doc
-        }
-        res.render("savedheadlines", hbsHeadlineObject)
-    })
-}
-
 module.exports = router;
