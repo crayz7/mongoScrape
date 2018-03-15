@@ -7,17 +7,11 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.petapixel.com" target="_blank">Visit PetaPixel</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/hadicodes" target="_blank">Visit my Github</a>
-        </li>
       </ul>
     </nav>
     <h3 class="text-muted">Mongo WebScraping</h3>
   </div>
-  <hr> {{!--Display the scraped titles, links, and article snippets in this section.--}}
+  <hr>
   <div class="row">
     <h1>
       <a href="{{result.link}}" target="_blank">{{result.title}}</a>
@@ -25,50 +19,40 @@
     <p>{{result.articleSnippet}}</p>
   </div>
   <div class="row">
-    <h2>Comments So Far</h2>
+    <h2>Notes So Far</h2>
   </div>
-  {{!--If no comments exist then display the following ptag info--}}
+  {{!--If no notes exist then display the following ptag info--}}
   <div class="row">
-    {{#unless result.comment}}
-    <p>There are no comments just yet. Add yours below!</p>
+    {{#unless result.note}}
+    <p>There aren't any notes. Add a note.</p>
     {{/unless}}
   </div>
-  {{!--Iterate through the comments by author and their message, display them, and have the option to delete them from the
+  {{!--Iterate through the notes by author and their message, display them, and have the option to delete them from the
   user view (also deletes from our db --}}
   <div class="row">
     <ul>
-      {{#each result.comment}}
+      {{#each result.note}}
       <li style="list-style: none">
         <h5>Name: {{this.name}} </h5>
-        <p>Message: {{this.body}}</p>
-        <button class="delete-button btn btn-secondary" data-comment="{{this._id}}">Delete Comment</button>
+        <p>Note: {{this.body}}</p>
+        <button class="delete-button btn btn-secondary" data-note="{{this._id}}">Delete note</button>
       </li>
       {{/each}}
     </ul>
 
   </div>
   <div class="row">
-    <h2>Say Something About This Article</h2>
+    <h2>Add a note About this article</h2>
   </div>
-  {{!--Do a post method for the comment(s) a user adds and save it to the db--}}
+  {{!--Do a post method for the note(s) a user adds and save it to the db--}}
   <form method="POST" action="/articles/{{result._id}}">
     <div class="form-group row">
       <label for="name" class="col-form-label">Name</label>
       <input class="form-control" type="text" name="name" id="name" required>
     </div>
     <div class="form-group row">
-      <label for="body">Message</label>
+      <label for="body">Note</label>
       <textarea class="form-control" id="body" name="body" rows="3" required></textarea>
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
-  <br>
-  <br>
-  <br>
-  <br>
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; Hadi Yousufi 2017</p>
-    </div>
-  </footer>
-</div>

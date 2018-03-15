@@ -28,7 +28,7 @@ app.get("/headlines/:id", function (req, res) {
         });
 });
 
-// Route for saving/updating an Headline's associated Note
+// Route for saving/updating a Headline's associated Note
 app.post("/headlines/:id", function (req, res) {
     // Create a new note and pass the req.body to the entry
     db.Note.create(req.body)

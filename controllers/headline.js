@@ -16,14 +16,43 @@ var Headline = require("../models/Headline.js");
 
 router.get("/savedheadlines"), function (req, res) {
     Headline.find({}, function (error, doc) {
+
         if (err) return res.status(500).send('Something broke!');
+
         var hbsHeadlineObject = {
             headlines: doc
         }
-        res.render("savedheadlines", hbsHeadlineObject)
+
+        res.render("saved", hbsHeadlineObject)
     })
 }
 
-module.exports = router;
+router.post("/saveheadline", function (req, res) {
 
-// need to include handelbars
+    var newHeadlineObject = {};
+
+    newHeadlineObject.title = req.body.title;
+
+    newHeadlineObject.link = req.body.link;
+
+    var entry = new Article(newHeadlineObject);
+
+    console.log("Headline saved: " + entry);
+
+    // Save headline to the db
+    entr.save(function (err, doc) {
+        // Log any errors
+        if (err) {
+            console.log(err);
+        }
+        // Or log the doc
+        else {
+            console.log(doc);
+        }
+    });
+
+    res.redirect("/savedarticles");
+
+});
+
+module.exports = router;
