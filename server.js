@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
+  
 });
 
 // Require all models

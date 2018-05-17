@@ -1,23 +1,25 @@
-var express = require("express");
+var db = require(".../models");
 
-var router = express.Router();
-
-// Route for saving/updating an Headline's associated Note
-router.post("/headlines/:id", function (req, res) {
-    // Create a new note and pass the req.body to the entry
-    db.Note.create(req.body)
-        .then(function (dbNote) {
-
-            return db.Headline.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
-        })
-        .then(function (dbHeadline) {
-            // If we were able to successfully update an Headline, send it back to the client
-            res.json(dbHeadline);
-        })
-        .catch(function (err) {
-            // If an error occurred, send it to the client
-            res.json(err);
-        });
-});
-
-module.exports = router;
+module.exports = {
+    findOne: function(req, res) {
+        db.Note
+          .findOne(req.query)
+          .then(function(dbNote) {
+              res.json(dbNote);
+          })
+    },
+    create: function(req, res) {
+        db.Note
+          .create(req.body)
+          .then(function(dbNote) {
+              res.json(dbNote);
+          })
+    },
+    delete: function(req, res) {
+        db.Note
+          .remove({ _id: req.params.id })
+          .then(function(dbNote) {
+              res.json(dbNote);
+          })
+    }
+}
